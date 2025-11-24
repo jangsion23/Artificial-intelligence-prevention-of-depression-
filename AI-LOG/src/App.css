@@ -1,0 +1,390 @@
+/* 전역 폰트 및 배경 설정 */
+body {
+  margin: 0;
+  font-family: 'Pretendard', 'SUIT', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F8F0E5; 
+  color: #4A4A4A;
+}
+
+/* ------------------------------------- */
+/* Home.jsx 메인 레이아웃 */
+/* ------------------------------------- */
+.home-container {
+  display: flex;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* 좌우 사이드바 스타일 */
+.left-sidebar, .right-sidebar {
+  flex: 1; 
+  background-color: #F8F0E5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-icon {
+  max-width: 70%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 중앙 컨텐츠 영역 */
+.home-main-content {
+  flex: 2; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.08);
+  margin: 20px;
+  overflow: hidden;
+}
+
+/* AI-LOG 로고 */
+.home-header {
+  margin-bottom: 40px; 
+}
+.logo-text {
+  font-family: 'Georgia', serif; 
+  font-size: 3.5rem;
+  color: #FF9B9B;
+  margin: 0;
+  letter-spacing: 5px;
+  font-weight: bold;
+  text-shadow: 0px 3px 5px rgba(255,155,155,0.4);
+}
+
+/* ------------------------------------- */
+/* '영상 편지' 버튼 (말풍선) */
+/* ------------------------------------- */
+.central-message-section {
+  margin-bottom: 40px;
+  cursor: pointer;
+  border-radius: 20px;
+  outline-offset: 5px;
+}
+
+/* 키보드 포커스 스타일 */
+.central-message-section:focus-visible,
+.microphone-icon-wrapper:focus-visible {
+  outline: 4px solid #FF9B9B;
+  outline-offset: 5px;
+  border-radius: 25px;
+}
+
+.speech-bubble {
+  background-color: #FFD6D6;
+  border-radius: 20px;
+  padding: 25px 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  position: relative;
+  transition: all 0.3s ease;
+}
+.central-message-section:hover .speech-bubble {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 25px;
+  height: 25px;
+  background-color: #FFD6D6;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  z-index: -1;
+  border-radius: 5px;
+}
+.speech-bubble p {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #555;
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+/* ------------------------------------- */
+/* 비디오 아이콘 버튼 */
+/* ------------------------------------- */
+.microphone-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.microphone-icon-wrapper {
+  width: 180px; 
+  height: 180px;
+  background-color: #FFC0CB;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.microphone-icon-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+.microphone-icon {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
+}
+
+/* ------------------------------------- */
+/* 웹캠 뷰 스타일 */
+/* ------------------------------------- */
+.webcam-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.webcam-view h3 {
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.webcam-view video {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  border-radius: 15px;
+  background-color: #333;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  transform: scaleX(-1);
+}
+.stop-button {
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #FF6B6B;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(255,107,107,0.4);
+}
+.stop-button:hover {
+  background-color: #e65a5a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255,107,107,0.5);
+}
+
+/* ------------------------------------- */
+/* 영상 목록 뷰 스타일 */
+/* ------------------------------------- */
+.video-list-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.video-list-view h3 {
+  color: #555;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.back-button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #888;
+  cursor: pointer;
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+.back-button:hover {
+  background-color: #f0f0f0;
+}
+.video-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+  width: 100%;
+}
+.video-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.video-list-item:hover {
+  transform: scale(1.02);
+}
+.video-thumbnail {
+  width: 100px;
+  height: 70px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #888;
+  flex-shrink: 0;
+}
+.video-info {
+  flex-grow: 1;
+  margin-left: 15px;
+  text-align: left;
+}
+.video-info p {
+  margin: 0;
+  line-height: 1.4;
+}
+.video-info .video-date {
+  font-weight: 600;
+  color: #333;
+}
+.video-info .video-duration {
+  font-size: 0.9rem;
+  color: #777;
+}
+.video-item-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.play-button {
+  background-color: #FF9B9B;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.9rem;
+  width: 100px;
+  box-sizing: border-box;
+}
+.play-button:hover {
+  background-color: #e68a8a;
+}
+.ai-button {
+  background-color: #A9C5EB;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.9rem;
+  width: 100px;
+  box-sizing: border-box;
+}
+.ai-button:hover {
+  background-color: #8faed6;
+}
+
+/* ------------------------------------- */
+/* AI 분석 상세 뷰 스타일 (신규 추가) */
+/* ------------------------------------- */
+.analysis-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; /* 내용 길어지면 스크롤 */
+}
+
+/* h3, back-button 스타일은 .video-list-view의 것을 공유 */
+.analysis-view h3 {
+  color: #555;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 영상 재생 영역 */
+.video-player-wrapper {
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.video-placeholder {
+  width: 100%;
+  height: 300px; /* 임시 높이 (나중에 <video> 태그로 교체) */
+  background-color: #333;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+/* 분석 결과 섹션 (요약, 결과, 대응법) */
+.analysis-section {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  text-align: left;
+  border: 1px solid #eee;
+}
+
+.analysis-section h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #FFD6D6; /* 말풍선 색과 통일 */
+  padding-bottom: 5px;
+}
+
+.analysis-section p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  /* 줄바꿈이 잘 되도록 */
+  white-space: pre-wrap; 
+  word-break: keep-all;
+}
