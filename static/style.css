@@ -1,0 +1,501 @@
+:root {
+  --bg: #0f172a;
+  --bg-soft: #111827;
+  --card: #111827;
+  --card-soft: #020617;
+  --accent: #6366f1;
+  --accent-soft: rgba(99, 102, 241, 0.15);
+  --accent-strong: #4f46e5;
+  --text-main: #e5e7eb;
+  --text-soft: #9ca3af;
+  --border-subtle: rgba(148, 163, 184, 0.3);
+  --danger: #ef4444;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.6);
+  --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.4);
+}
+
+/* 기본 리셋 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+  background: radial-gradient(circle at top, #1d283a 0, #020617 55%, #020617 100%);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 앱 전체 레이아웃 */
+.app-root {
+  min-height: 100vh;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 16px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 헤더 */
+.app-header {
+  padding: 12px 4px 20px;
+}
+
+.logo-area {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.7);
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.25);
+  backdrop-filter: blur(18px);
+}
+
+.logo-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #f9fafb, #22d3ee, #4f46e5);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.9);
+}
+
+.logo-text {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: #e5e7eb;
+}
+
+.header-subtitle {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+
+/* 메인 */
+.app-main {
+  flex: 1;
+  margin-top: 8px;
+}
+
+/* 메인 메뉴 */
+.menu-section {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  padding: 22px 22px 26px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  backdrop-filter: blur(20px);
+}
+
+.menu-title {
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.menu-card {
+  background: radial-gradient(circle at top left, #1f2937, #020617);
+  border-radius: var(--radius-lg);
+  padding: 20px 18px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  cursor: pointer;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+    border-color 0.12s ease-out, background 0.12s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-subtle);
+  border-color: var(--accent-soft);
+  background: radial-gradient(circle at top left, #1e293b, #020617);
+}
+
+.menu-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.menu-card h2 {
+  font-size: 1rem;
+}
+
+.menu-card p {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
+/* 공통 섹션 */
+.page-section {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  padding: 22px 22px 26px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  backdrop-filter: blur(20px);
+}
+
+.hidden {
+  display: none;
+}
+
+.section-title {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.section-desc {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  margin-bottom: 14px;
+}
+
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* 버튼들 */
+.back-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  margin-bottom: 6px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.back-btn:hover {
+  color: #e5e7eb;
+}
+
+.primary-btn,
+.secondary-btn {
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.08s ease-out, box-shadow 0.08s ease-out,
+    background 0.08s ease-out, opacity 0.08s ease-out;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--accent-strong), #22c1c3);
+  color: #f9fafb;
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(79, 70, 229, 0.6);
+}
+
+.primary-btn.full {
+  width: 100%;
+  justify-content: center;
+}
+
+.secondary-btn {
+  background: rgba(15, 23, 42, 0.7);
+  color: var(--text-main);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+.secondary-btn.small {
+  padding: 6px 10px;
+  font-size: 0.82rem;
+}
+
+.secondary-btn:hover {
+  background: rgba(30, 64, 175, 0.4);
+}
+
+/* 녹화 영역 */
+.record-area {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr);
+  gap: 14px;
+}
+
+#recordVideo {
+  width: 100%;
+  border-radius: 18px;
+  background: #020617;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  min-height: 220px;
+}
+
+.record-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* 기록된 영상 리스트 */
+.video-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.video-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+  gap: 10px;
+  padding: 10px;
+  background: radial-gradient(circle at top left, #020617, #020617);
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.video-card video {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: #020617;
+}
+
+.video-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.video-meta span {
+  display: inline-block;
+}
+
+.main-emotion-badge {
+  align-self: flex-start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(52, 211, 153, 0.08);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  font-size: 0.78rem;
+}
+
+.delete-btn {
+  margin-top: 4px;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(239, 68, 68, 0.14);
+  color: #fecaca;
+  font-size: 0.8rem;
+  border: 1px solid rgba(248, 113, 113, 0.6);
+}
+.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+}
+
+/* 요약 섹션 */
+.summary-card {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: radial-gradient(circle at top left, #020617, #020617);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-content h3 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.summary-emotions {
+  white-space: pre-wrap;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px dashed rgba(148, 163, 184, 0.5);
+  color: var(--text-soft);
+  margin-bottom: 8px;
+}
+
+.summary-message {
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+/* 푸터 */
+.app-footer {
+  margin-top: 18px;
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(31, 41, 55, 0.9);
+  padding-top: 10px;
+}
+
+.footer-right {
+  opacity: 0.8;
+}
+
+/* 반응형 */
+@media (max-width: 720px) {
+  .app-root {
+    padding: 18px 12px 24px;
+  }
+
+  .menu-section,
+  .page-section {
+    padding: 18px 14px 20px;
+  }
+
+  .video-card {
+    grid-template-columns: 1fr;
+  }
+
+  #recordVideo {
+    min-height: 200px;
+  }
+
+  .app-footer {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+/* ===== 편지 모양 썸네일 ===== */
+.video-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  background: radial-gradient(circle at top left, #1f2937, #020617);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+    border-color 0.12s ease-out, background 0.12s ease-out;
+}
+
+.video-thumb:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.9);
+  border-color: rgba(129, 140, 248, 0.9);
+  background: radial-gradient(circle at top left, #111827, #020617);
+}
+
+.video-thumb-icon {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+}
+
+.video-thumb-text {
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+.video-thumb-subtext {
+  font-size: 0.78rem;
+  color: #9ca3af;
+}
+
+/* 썸네일 아래에 보여질 실제 비디오 */
+.video-player {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: #020617;
+  margin-top: 8px;
+}
+.hero-illustration {
+  margin-top: 40px;
+  padding: 40px 24px 56px;
+  background: linear-gradient(135deg, #f3f0ff, #e7f3ff);
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-illustration-inner {
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1 1 280px;
+  min-width: 260px;
+}
+
+.hero-text h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.hero-text p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.hero-image-wrapper {
+  flex: 1 1 280px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  max-width: 360px;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+  object-fit: cover;
+}

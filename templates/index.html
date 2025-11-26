@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>my memory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}"
+  />
+  <script
+    src="{{ url_for('static', filename='app.js') }}"
+    defer
+  ></script>
+</head>
+<body>
+  <div class="app-root">
+    <!-- 헤더 -->
+    <header class="app-header">
+      <div class="logo-area">
+        <span class="logo-dot"></span>
+        <span class="logo-text">my memory</span>
+      </div>
+      <p class="header-subtitle">
+        오늘의 나를 영상으로 기록하고, 표정 속 감정을 돌아보는 작은 일기장
+      </p>
+    </header>
+
+    <!-- 메인 메뉴 -->
+    <main class="app-main">
+      <section id="mainMenu" class="menu-section">
+        <h1 class="menu-title">무엇을 해볼까요?</h1>
+        <div class="menu-grid">
+          <!-- 1. 영상 녹화하기 -->
+          <article class="menu-card" data-target="recordSection">
+            <div class="menu-icon">🎥</div>
+            <h2>영상 녹화하기</h2>
+            <p>지금 이 순간의 표정을 짧은 영상으로 남겨요.</p>
+          </article>
+
+          <!-- 2. 기록된 영상 보기 -->
+          <article class="menu-card" data-target="listSection">
+            <div class="menu-icon">🗂️</div>
+            <h2>기록된 영상 보기</h2>
+            <p>지금까지 기록한 나의 표정과 감정을 다시 살펴봐요.</p>
+          </article>
+
+          <!-- 3. 감정 요약 멘트 받기 -->
+          <article class="menu-card" data-target="summarySection">
+            <div class="menu-icon">💬</div>
+            <h2>종합 감정 멘트 받기</h2>
+            <p>나의 감정 흐름을 한 문장으로 요약해 드릴게요.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 1. 영상 녹화하기 페이지 -->
+      <section class="page-section hidden" id="recordSection">
+        <button class="back-btn" data-back>◀ 메인으로</button>
+        <h2 class="section-title">🎥 영상 녹화하기</h2>
+        <p class="section-desc">
+          카메라를 켜서 지금의 나를 기록해 보세요. 녹화를 종료하면 자동으로
+          서버에 저장되고 감정 분석이 진행됩니다.
+        </p>
+
+        <div class="record-area">
+          <video id="recordVideo" autoplay playsinline></video>
+          <div class="record-buttons">
+            <button id="startRecordBtn" class="primary-btn">
+              녹화 시작
+            </button>
+            <button id="stopRecordBtn" class="secondary-btn">
+              녹화 종료
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 기록된 영상 보기 페이지 -->
+      <section class="page-section hidden" id="listSection">
+        <button class="back-btn" data-back>◀ 메인으로</button>
+        <div class="section-header-row">
+          <h2 class="section-title">🗂️ 기록된 영상 보기</h2>
+          <button id="refreshListBtn" class="secondary-btn small">
+            목록 새로고침
+          </button>
+        </div>
+        <p class="section-desc">
+          저장된 영상과 그때 감지된 대표 감정을 함께 확인할 수 있어요.
+        </p>
+
+        <div id="videoList" class="video-list">
+          <!-- JS에서 카드들이 동적으로 생성됨 -->
+        </div>
+      </section>
+
+      <!-- 3. 종합 감정 멘트 페이지 -->
+      <section class="page-section hidden" id="summarySection">
+        <button class="back-btn" data-back>◀ 메인으로</button>
+        <h2 class="section-title">💬 종합 감정 멘트</h2>
+        <p class="section-desc">
+          지금까지 기록된 영상 속 표정들을 바탕으로, 나의 감정 흐름을
+          요약해 드려요.
+        </p>
+
+        <div class="summary-card">
+          <button id="getSummaryBtn" class="primary-btn full">
+            종합 감정 요청하기
+          </button>
+
+          <div class="summary-content">
+            <!-- 감정 비율 출력 부분 제거됨 -->
+            <h3>한 줄 멘트</h3>
+            <p id="summaryMessage" class="summary-message">
+              여기에 나의 감정 상태를 한 문장으로 정리해 드릴게요.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 부모-아기 히어로 섹션 (메인 밑, 푸터 위) -->
+    <section class="hero-illustration">
+      <div class="hero-illustration-inner">
+        <div class="hero-text">
+          <h2>우리 아이의 하루를, 영상으로 남겨요</h2>
+          <p>
+            엄마 아빠의 따뜻한 목소리와 표정을 기록해 두면<br />
+            나중에 아이가 자라서 다시 보며 큰 힘이 될 수 있어요.
+          </p>
+        </div>
+        <div class="hero-image-wrapper">
+          <img
+            src="{{ url_for('static', filename='img/parent_baby_video.png') }}"
+            alt="부모가 아기에게 영상을 보여주는 장면"
+            class="hero-image"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="app-footer">
+      <span>© {{ year }} my memory</span>
+      <span class="footer-right">made for you to remember your feelings</span>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.venv/
+venv/
+videos/
+*.webm
+__pycache__/
+*.pyc
+.DS_Store
